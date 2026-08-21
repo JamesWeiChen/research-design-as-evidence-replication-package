@@ -3,9 +3,7 @@
 Release: `20260821-v1`
 
 This package contains the selected numerical solver used in the paper and the
-complete programs needed to reproduce Figures 2 and 3. The code uses the
-paper's current notation, contains English documentation throughout, and has
-no dependency on private paths or unpublished source trees.
+complete programs needed to reproduce Figures 2 and 3. 
 
 ## Quick start
 
