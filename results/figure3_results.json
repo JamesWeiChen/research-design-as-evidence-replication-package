@@ -1,0 +1,156 @@
+{
+  "release_version": "20260821-v1",
+  "release_date": "2026-08-21",
+  "status": "tolerance-qualified numerical reproduction",
+  "normalization": {
+    "alpha": 1.0,
+    "beta": 1.0,
+    "c_a": 200.0,
+    "c_d": 0.16,
+    "V": 1.0,
+    "r": 2.142857142857143
+  },
+  "case_order": [
+    "B1",
+    "B2"
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0"
+  },
+  "cases": {
+    "B1": {
+      "case": "B1",
+      "prior": "N(0,1)",
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 1.0,
+        "c_a": 200.0,
+        "c_d": 0.16,
+        "V": 1.0,
+        "r": 2.142857142857143,
+        "c_p": 0.8333333333333334,
+        "delta0": 15.0
+      },
+      "TR": {
+        "type": "mixed",
+        "d_L": 0.04827667425137419,
+        "d_H": 2.36926909046445,
+        "c": 2.3252489732149635,
+        "w_L": 0.046325909910594425,
+        "w_H": 0.9536740900894056,
+        "tie_residual": 5.551115123125783e-17,
+        "balance_residual": 0.0,
+        "foc_L": 2.2551405187698492e-17,
+        "foc_H": 2.7755575615628914e-16,
+        "U_R_mix": 0.4921224772886719,
+        "Y_d_L": 1.5209767357227888,
+        "Y_d_H": 0.18308403018900177,
+        "acceptance_L": 0.2248259279061966,
+        "acceptance_H": 0.5898286204417317,
+        "acceptance": 0.5729195385902061,
+        "d_cp": 1.0028753070071716,
+        "G_residual": 0.0,
+        "c_star_dcp": 2.325248973214963,
+        "d_pp": 2.31862660712199,
+        "UR_residual": 0.0,
+        "c_star_dpp": 2.208476876636626,
+        "U_R_dcp": 0.06037108803191624,
+        "Y_d_cp": 0.36828029742770835,
+        "Y_d_pp": 0.18587032232258174,
+        "diagnostics": {
+          "status": "approximate_candidate",
+          "equilibrium_conditions": {
+            "on_path_rejection": true,
+            "support_global_optimality": true,
+            "cutoff_pool_acceptable": true,
+            "common_gap_rejected": true,
+            "lower_boundary_rejected": true
+          },
+          "max_support_payoff_gap": 1.7208456881689926e-15,
+          "balance_residual": 4.673651597206718e-19,
+          "common_gap_max_payoff": -0.00017154431060864024,
+          "low_boundary_payoff": -0.0006921998311812949
+        }
+      },
+      "PR": {
+        "d": 2.383986504989317,
+        "c": 2.206059064251562,
+        "U_S": 0.16293151914876375,
+        "U_R": 0.5302679352598683,
+        "foc_residual": 1.2300924168151539e-14,
+        "cutoff_residual": 0.0,
+        "Y": 0.18229938275831312,
+        "acceptance": 0.6406612414653741
+      },
+      "U_R_PR_minus_TR": 0.03814545797119634
+    },
+    "B2": {
+      "case": "B2",
+      "prior": "N(0,1)",
+      "parameters": {
+        "alpha": 1.0,
+        "beta": 1.0,
+        "c_a": 200.0,
+        "c_d": 0.16,
+        "V": 1.0,
+        "r": 2.142857142857143,
+        "c_p": 0.8333333333333334,
+        "delta0": 20000.0
+      },
+      "TR": {
+        "type": "mixed",
+        "d_L": 3.5594312099799426e-05,
+        "d_H": 2.4189875955042046,
+        "c": 2.240825708567617,
+        "w_L": 0.017310533218751086,
+        "w_H": 0.9826894667812489,
+        "tie_residual": 6.800116025829084e-15,
+        "balance_residual": -4.336808689942018e-19,
+        "foc_L": 2.0324555569366937e-17,
+        "foc_H": 1.1657341758564144e-15,
+        "U_R_mix": 0.5408203430613582,
+        "Y_d_L": 1.5523939659789405,
+        "Y_d_H": 0.10008541107756,
+        "acceptance_L": 0.24560167436061825,
+        "acceptance_H": 0.609588735383653,
+        "acceptance": 0.6032879252726181,
+        "d_cp": 0.04891087917962664,
+        "G_residual": 4.440892098500626e-16,
+        "c_star_dcp": 2.240825708567619,
+        "d_pp": 2.4003147233759083,
+        "UR_residual": 0.0,
+        "c_star_dpp": 2.142943405329827,
+        "U_R_dcp": 0.006391037503528885,
+        "Y_d_cp": 0.22602131351403884,
+        "Y_d_pp": 0.10008674454290654,
+        "diagnostics": {
+          "status": "approximate_candidate",
+          "equilibrium_conditions": {
+            "on_path_rejection": true,
+            "support_global_optimality": true,
+            "cutoff_pool_acceptable": true,
+            "common_gap_rejected": true,
+            "lower_boundary_rejected": true
+          },
+          "max_support_payoff_gap": 9.270362255620057e-15,
+          "balance_residual": -4.81494321471604e-19,
+          "common_gap_max_payoff": -9.276369911623975e-05,
+          "low_boundary_payoff": -0.0021168453670856735
+        }
+      },
+      "PR": {
+        "d": 2.380239477448182,
+        "c": 2.1429448947769933,
+        "U_S": 0.16616870978984893,
+        "U_R": 0.5288212324567267,
+        "foc_residual": 7.223869668681465e-16,
+        "cutoff_residual": 0.0,
+        "Y": 0.10008821328436629,
+        "acceptance": 0.6320858239869328
+      },
+      "U_R_PR_minus_TR": -0.011999110604631436
+    }
+  }
+}
