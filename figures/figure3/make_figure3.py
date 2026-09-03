@@ -318,8 +318,8 @@ def make_figure(registry: dict) -> plt.Figure:
     x = np.linspace(XLIM[0], XLIM[1], 2600)
     cases = [registry["cases"][label] for label in registry["case_order"]]
     headers = (
-        r"(a) B1: $c_p=5/6$, $\delta_0=15$",
-        r"(b) B2: $c_p=5/6$, $\delta_0=20{,}000$",
+        r"(a) $\mathbf{B}_{\mathbf{1}}$: $c_p=5/6$, $\delta_0=15$",
+        r"(b) $\mathbf{B}_{\mathbf{2}}$: $c_p=5/6$, $\delta_0=20{,}000$",
     )
     for col, (case, header) in enumerate(zip(cases, headers)):
         position = axes[0, col].get_position()
