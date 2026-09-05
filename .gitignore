@@ -1,0 +1,8 @@
+# macOS Finder metadata (at any directory depth)
+.DS_Store
+._*
+.AppleDouble/
+.LSOverride
+
+# Local VS Code environment preferences
+/.vscode/settings.json
