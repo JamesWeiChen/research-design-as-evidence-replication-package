@@ -337,7 +337,7 @@ def write_records(results: dict[str, dict]) -> None:
     REGISTRY.parent.mkdir(parents=True, exist_ok=True)
     registry = {
         "release_version": VERSION,
-        "release_date": "2026-08-21",
+        "release_date": "2026-09-05",
         "status": "self-contained numerical reproduction",
         "normalization": COMMON,
         "case_order": ["B0", "A1"],

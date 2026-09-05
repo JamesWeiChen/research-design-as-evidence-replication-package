@@ -196,7 +196,7 @@ def main() -> None:
 
     registry = {
         "release_version": VERSION,
-        "release_date": "2026-08-21",
+        "release_date": "2026-09-05",
         "status": "tolerance-qualified numerical reproduction",
         "normalization": COMMON,
         "case_order": ["B1", "B2"],

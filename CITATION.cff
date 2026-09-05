@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "Please cite the working paper below when using this replication package."
+type: software
+title: "Research Design as Evidence: Figures 2–3 replication package"
+authors:
+  - name: "Research Design as Evidence contributors"
+version: "20260905-v2"
+date-released: 2026-09-05
+license: MIT
+repository-code: "https://github.com/JamesWeiChen/research-design-as-evidence-replication-package"
+preferred-citation:
+  type: report
+  title: "Research Design as Evidence: Information and Incentives in Peer Review"
+  authors:
+    - family-names: Chen
+      given-names: Wei-Cheng
+      orcid: "https://orcid.org/0000-0002-8237-0683"
+    - family-names: Chen
+      given-names: Wei James
+      orcid: "https://orcid.org/0000-0001-6360-9348"
+    - family-names: Sheen
+      given-names: Greg Chih-Hsin
+      orcid: "https://orcid.org/0000-0003-1961-7804"
+  year: 2026
+  month: 8
+  notes: "Working paper dated August 26, 2026; revised August 29, 2026."
+  doi: "10.2139/ssrn.7353099"
+  url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7353099"
+  institution:
+    name: SSRN

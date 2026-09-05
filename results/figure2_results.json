@@ -1,6 +1,6 @@
 {
-  "release_version": "20260821-v1",
-  "release_date": "2026-08-21",
+  "release_version": "20260905-v2",
+  "release_date": "2026-09-05",
   "status": "self-contained numerical reproduction",
   "normalization": {
     "alpha": 1.0,
@@ -38,14 +38,14 @@
         "delta0": 15.0
       },
       "TR": {
-        "d": 2.3321319498977746,
-        "c": 2.2063997516997764,
-        "U_S": 0.1625516206544858,
-        "U_R": 0.49990780529037887,
-        "foc_residual": 2.7755575615628914e-16,
-        "cutoff_residual": 0.0,
-        "acceptance": 0.6211127924670957,
-        "cutoff_slope": -0.03559957302167156,
+        "d": 2.332131949897777,
+        "c": 2.206399751699776,
+        "U_S": 0.16255162065448675,
+        "U_R": 0.4999078052903801,
+        "foc_residual": 3.885780586188048e-16,
+        "cutoff_residual": 4.440892098500626e-16,
+        "acceptance": 0.6211127924670967,
+        "cutoff_slope": -0.03559957302176842,
         "global_deviation_gap_16001": 0.0
       },
       "PR": {
@@ -58,11 +58,11 @@
         "acceptance": 0.6404748653803654
       },
       "comparison": {
-        "d_PR_minus_TR": 0.052169840099112186,
-        "cutoff_PR_minus_TR": -0.0018177733222057846,
-        "U_S_PR_minus_TR": 0.0003632177710206075,
-        "U_R_PR_minus_TR": 0.030584101852315915,
-        "acceptance_PR_minus_TR": 0.019362072913269635
+        "d_PR_minus_TR": 0.052169840099109965,
+        "cutoff_PR_minus_TR": -0.0018177733222053405,
+        "U_S_PR_minus_TR": 0.0003632177710196638,
+        "U_R_PR_minus_TR": 0.030584101852314693,
+        "acceptance_PR_minus_TR": 0.019362072913268635
       }
     },
     "A1": {

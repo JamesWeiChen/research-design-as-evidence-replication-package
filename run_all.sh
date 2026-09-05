@@ -8,6 +8,7 @@ export MPLCONFIGDIR="${TMPDIR:-/tmp}/nhb-matplotlib"
 
 cd "$RELEASE_ROOT"
 
+python verify_release.py
 python -m unittest discover -s tests -p 'test_*.py'
 python figures/figure2/make_figure2.py
 python figures/figure2/verify_figure2.py

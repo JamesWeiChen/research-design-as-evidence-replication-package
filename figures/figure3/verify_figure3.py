@@ -3,14 +3,17 @@
 
 from __future__ import annotations
 
-import csv
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
 from pypdf import PdfReader
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from figures.figure_style import format_significant
+from figures.validation import validate_csv, require_finite
 
 
 HERE = Path(__file__).resolve().parent
@@ -40,6 +43,7 @@ def main() -> None:
         )
 
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    require_finite(registry)
     require(registry["release_version"] == VERSION, "wrong registry version")
     require(registry["case_order"] == ["B1", "B2"], "wrong case order")
     require(set(registry["cases"]) == {"B1", "B2"}, "registry must contain only B1/B2")
@@ -70,12 +74,18 @@ def main() -> None:
                 f"{label} PR acceptance")
         require(abs(case["U_R_PR_minus_TR"] - ur_diff) <= 1e-6,
                 f"{label} reviewer-payoff difference")
-        require(max(pr["foc_residual"], pr["cutoff_residual"]) <= 2e-10,
+        require(max(abs(pr["foc_residual"]), abs(pr["cutoff_residual"])) <= 2e-10,
                 f"{label} PR residuals")
         require(tr["diagnostics"]["status"] == "approximate_candidate",
                 f"{label} mixed status")
+        conditions = tr["diagnostics"]["equilibrium_conditions"]
+        require(set(conditions) == {
+            "on_path_rejection", "support_global_optimality",
+            "cutoff_pool_acceptable", "common_gap_rejected",
+            "lower_boundary_rejected",
+        }, f"{label} missing equilibrium condition")
         require(
-            all(tr["diagnostics"]["equilibrium_conditions"].values()),
+            all(value is True for value in conditions.values()),
             f"{label} equilibrium conditions",
         )
         require(max(
@@ -87,14 +97,11 @@ def main() -> None:
         ) <= 2e-9, f"{label} mixed residuals")
 
     b1, b2 = registry["cases"]["B1"], registry["cases"]["B2"]
-    require(b1["PR"]["d"] > b1["TR"]["d_pp"], "B1 design ordering")
-    require(b2["PR"]["d"] < b2["TR"]["d_pp"], "B2 design ordering")
+    require(b1["PR"]["d"] > b1["TR"]["d_pp"] > b1["TR"]["d_cp"], "B1 design ordering")
+    require(b2["TR"]["d_pp"] > b2["PR"]["d"] > b2["TR"]["d_cp"], "B2 design ordering")
 
     csv_path = OUT / "figure3_values.csv"
-    with csv_path.open(newline="", encoding="utf-8") as stream:
-        rows = list(csv.DictReader(stream))
-    require([row["case"] for row in rows] == ["B1", "B2"], "CSV case order")
-    require(all("PR_acceptance" in row for row in rows), "CSV PR acceptance missing")
+    validate_csv(csv_path, registry, figure=3)
 
     source = (HERE / "make_figure3.py").read_text(encoding="utf-8")
     require(r"Pre-adjustment value, $z=\alpha d+\theta$" in source,

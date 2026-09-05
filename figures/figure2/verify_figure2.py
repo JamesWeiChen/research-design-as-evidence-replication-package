@@ -3,12 +3,16 @@
 
 from __future__ import annotations
 
-import csv
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
 from pypdf import PdfReader
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from figures.validation import validate_csv, require_finite
+from figures.figure2.make_figure2 import validate_case
 
 
 HERE = Path(__file__).resolve().parent
@@ -20,11 +24,16 @@ REGISTRY = ROOT / "results" / "figure2_results.json"
 
 def main() -> None:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    require_finite(registry)
     if (
         registry["release_version"] != VERSION
         or registry["case_order"] != ["B0", "A1"]
     ):
         raise RuntimeError("wrong Figure 2 registry version or case order")
+    if set(registry["cases"]) != {"B0", "A1"}:
+        raise RuntimeError("Figure 2 registry must contain only B0/A1")
+    for label in ("B0", "A1"):
+        validate_case(label, registry["cases"][label])
     b0 = registry["cases"]["B0"]
     a1 = registry["cases"]["A1"]
     if not b0["PR"]["d"] > b0["TR"]["d"]:
@@ -40,13 +49,7 @@ def main() -> None:
         raise RuntimeError("pure-TR global-best-response gate failed")
 
     csv_path = OUT / "figure2_values.csv"
-    rows = list(csv.DictReader(csv_path.open(encoding="utf-8")))
-    if [row["case"] for row in rows] != ["B0", "A1"]:
-        raise RuntimeError("Figure 2 CSV case order failed")
-    if abs(float(rows[0]["d_TR"]) - b0["TR"]["d"]) > 1.0e-12:
-        raise RuntimeError("Figure 2 CSV is not registry-bound")
-    if abs(float(rows[1]["d_PR"]) - a1["PR"]["d"]) > 1.0e-12:
-        raise RuntimeError("Figure 2 CSV is not registry-bound")
+    validate_csv(csv_path, registry, figure=2)
 
     caption = (OUT / "figure2_caption.md").read_text(encoding="utf-8")
     for token in (
